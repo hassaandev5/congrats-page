@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayers & Blessings</title>
+    <style>
+        :root {
+            --primary-color: #9b6b9e;
+            --light-color: #f5e6ff;
+            --dark-color: #614063;
+            --scroll-color: #fff5e6;
+            --border-color: #d4b483;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(135deg, #e6d0eb, #b185b7);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            background: var(--light-color);
+        }
+
+        .nav-item a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .scroll-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background: var(--scroll-color);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 2rem;
+            margin: 20px;
+        }
+
+        .content-wrapper {
+            position: relative;
+            padding: 1rem;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
+            border-radius: 10px;
+        }
+
+        .title {
+            color: var(--dark-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .blessing-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 1.5rem 0;
+        }
+
+        .arabic-text {
+            font-size: 1.4rem;
+            text-align: right;
+            direction: rtl;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            line-height: 2;
+        }
+
+        .translation {
+            color: #444;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .blessing-author {
+            font-style: italic;
+            color: var(--dark-color);
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        .add-blessing-btn {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            background: linear-gradient(45deg, var(--primary-color), var(--dark-color));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .add-blessing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .title { font-size: 2rem; }
+            .subtitle { font-size: 1.2rem; }
+            .scroll-container { padding: 1rem; }
+            .blessing-card { padding: 1.5rem; }
+            .arabic-text { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="predictions.html">Predictions</a></li>
+            <li class="nav-item"><a href="blessings.html" class="active">Blessings</a></li>
+            <li class="nav-item"><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <div class="scroll-container">
+        <div class="content-wrapper">
+            <h1 class="title">Prayers & Blessings</h1>
+            <h2 class="subtitle">Duas for the Journey Ahead</h2>
+
+            <div class="blessing-card">
+                <p class="arabic-text">رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ الدُّعَاءِ</p>
+                <p class="translation">"My Lord, grant me from Yourself a good offspring. Indeed, You are the Hearer of supplication" - [Quran 3:38]</p>
+                <div class="blessing-author">Shared by Fatima</div>
+            </div>
+
+            <div class="blessing-card">
+                <p class="arabic-text">اللَّهُمَّ إِنِّي أَسْتَوْدِعُكَ دِينِي وَأَمَانَتِي وَخَوَاتِيمَ عَمَلِي</p>
+                <p class="translation">"O Allah, I entrust to You my faith, my trust, and the conclusions of my deeds."</p>
+                <div class="blessing-author">- Aisha</div>
+            </div>
+
+            <div class="blessing-card">
+                <p class="blessing-content">May Allah bless your child with good health, happiness, and a kind heart. May they grow to be the coolness of your eyes and a source of continuous blessings. May your journey through motherhood be filled with joy and precious moments.</p>
+                <div class="blessing-author">- Your Team</div>
+            </div>
+
+            <button class="add-blessing-btn">Share a Dua 🤲</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.add-blessing-btn').addEventListener('click', () => {
+            alert('Blessing submission form coming soon! 🤲');
+        });
+    </script>
+</body>
+</html>

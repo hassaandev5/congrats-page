@@ -1,49 +1,12 @@
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Congratulations on Your Baby Boy!</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="falling-elements"></div>
-
-    <main class="container">
-      <h1 class="title">Congratulations!</h1>
-      <div class="baby-icon">👶</div>
-      <h2 class="subtitle">Welcome Little One!</h2>
-
-      <div class="message-card">
-        <p>Dear <span class="name">Sidra</span>,</p>
-        <p>
-          As you embark on this beautiful journey of motherhood, we want to
-          celebrate this precious moment with you! Your dedication and amazing
-          work have inspired us all, and now you're starting the most wonderful
-          adventure of all.
-        </p>
-        <p>
-          We'll miss you during your maternity leave, but we couldn't be happier
-          for you and your growing family!
-        </p>
-        <p>With love,</p>
-        <p>Your Team ❤️</p>
-      </div>
-
-      <button class="celebrate-btn">Click to Celebrate! 🎉</button>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
-</html> --> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Farewell Scroll</title>
+    <title>Future Wishes & Predictions</title>
     <style>
+        /* Existing root and basic styles remain the same */
         :root {
             --primary-color: #9b6b9e;
             --light-color: #f5e6ff;
@@ -63,18 +26,53 @@
             background: linear-gradient(135deg, #e6d0eb, #b185b7);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
-            padding: 2rem 0;
+            z-index: 1;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            background: var(--light-color);
+        }
+
+        .nav-item a.active {
+            background: var(--primary-color);
+            color: white;
         }
 
         .scroll-container {
             position: relative;
             width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
+            max-width: 800px;
             background: var(--scroll-color);
             border: 2px solid var(--border-color);
             border-radius: 15px;
@@ -83,39 +81,11 @@
             margin: 20px;
         }
 
-        /* Custom Scrollbar */
-        .scroll-container::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        .scroll-container::-webkit-scrollbar-track {
-            background: rgba(155, 107, 158, 0.1);
-            border-radius: 6px;
-        }
-
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 6px;
-            border: 3px solid var(--scroll-color);
-        }
-
         .content-wrapper {
             position: relative;
             padding: 1rem;
             background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
             border-radius: 10px;
-        }
-
-        .decorative-border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            pointer-events: none;
-            opacity: 0.5;
         }
 
         .title {
@@ -136,26 +106,25 @@
             opacity: 0.8;
         }
 
-        .message-card {
-            background: rgba(255, 255, 255, 0.9);
+        .prediction-card {
+            background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin: 1.5rem 0;
-            line-height: 1.8;
         }
 
-        .message-card p {
-            margin-bottom: 1.2rem;
+        .prediction-category {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .prediction-content {
             color: #444;
-            font-size: 1.1rem;
-        }
-
-        .signature {
-            font-style: italic;
-            color: var(--dark-color);
-            margin-top: 2rem;
-            text-align: right;
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         .celebrate-btn {
@@ -185,75 +154,63 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1000;
+            z-index: 9999;
         }
-
-        .decorative-corner {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 2px solid var(--border-color);
-            opacity: 0.6;
-        }
-
-        .corner-tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
-        .corner-tr { top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
-        .corner-bl { bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
-        .corner-br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
 
         @media (max-width: 600px) {
             .title { font-size: 2rem; }
             .subtitle { font-size: 1.2rem; }
             .scroll-container { padding: 1rem; }
-            .message-card { padding: 1.5rem; }
+            .prediction-card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="falling-elements"></div>
 
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="predictions.html" class="active">Predictions</a></li>
+            <li class="nav-item"><a href="blessings.html">Blessings</a></li>
+            <li class="nav-item"><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+
     <div class="scroll-container">
         <div class="content-wrapper">
-            <div class="decorative-corner corner-tl"></div>
-            <div class="decorative-corner corner-tr"></div>
-            <div class="decorative-corner corner-bl"></div>
-            <div class="decorative-corner corner-br"></div>
-            
-            <h1 class="title">Farewell & Best Wishes</h1>
-            <h2 class="subtitle">Until We Meet Again...</h2>
+            <h1 class="title">Future Wishes & Predictions</h1>
+            <h2 class="subtitle">Glimpses into Tomorrow</h2>
 
-            <div class="message-card">
-              <p>Dear Sidra,</p>
-              <p>
-                  Today our hearts are filled with mixed emotions as we bid you farewell 
-                  for this wonderful new chapter in your life. Your leadership has been 
-                  our guiding light, and while your absence will be deeply felt, we're thrilled 
-                  about the beautiful journey of motherhood ahead of you.
-              </p>
-              <p>
-                  Our prayers and best wishes are with you during this precious time. May you be 
-                  blessed with a healthy pregnancy, a safe delivery, and a beautiful, healthy baby. 
-                  Your strength and grace will make you an amazing mother, just as they made you 
-                  an incredible leader.
-              </p>
-              <p>
-                  We pray that this new chapter brings you endless joy, precious moments, and the 
-                  magical experience of motherhood. Take all the time you need to cherish these 
-                  special moments with your little one. We'll be here, eagerly awaiting stories 
-                  of your new adventures when you return.
-              </p>
-              <p>
-                  May Allah bless you and your growing family with health, happiness, and His 
-                  divine protection. Until then, take care and enjoy every moment of this 
-                  beautiful journey.
-              </p>
-                <div class="signature">
-                    <p>With love and gratitude,</p>
-                    <p>Your Team 💝</p>
-                </div>
+            <div class="prediction-card">
+                <div class="prediction-category">What kind of mom Sidra will be</div>
+                <p class="prediction-content">
+                    Just as she leads our team with compassion and wisdom, Sidra will be an amazing mother who nurtures her child's curiosity and strength. Her patience, understanding, and ability to bring out the best in people will create a beautiful foundation for her little one to grow and thrive.
+                </p>
             </div>
 
-            <button class="celebrate-btn">Shower with Love! ✨</button>
+            <div class="prediction-card">
+                <div class="prediction-category">Baby's First Words</div>
+                <p class="prediction-content">
+                    With Sidra's wonderful way of communication and her gentle voice, I predict the baby's first word will be "Mama" followed quickly by "please" - always polite and articulate just like mom! 😊
+                </p>
+            </div>
+
+            <div class="prediction-card">
+                <div class="prediction-category">Future Talents</div>
+                <p class="prediction-content">
+                    This little one will definitely inherit Sidra's amazing organizational skills and creative problem-solving abilities. I can already see a future leader in the making! The baby will have their mother's eye for detail and heart of gold.
+                </p>
+            </div>
+
+            <div class="prediction-card">
+                <div class="prediction-category">Message for Baby's Future</div>
+                <p class="prediction-content">
+                    Dear little one, you are so blessed to have Sidra as your mother. She has been our guiding light at work, and we know she'll be your brightest star. May you grow up with her strength, wisdom, and beautiful smile.
+                </p>
+            </div>
+
+            <button class="celebrate-btn">Congratulations! 🎉</button>
         </div>
     </div>
 
@@ -276,7 +233,7 @@
                             left: ${Math.random() * 100}vw;
                             font-size: ${Math.random() * 20 + 20}px;
                             animation: fall ${Math.random() * 2 + 3}s linear;
-                            z-index: 1000;
+                            z-index: 9999;
                             opacity: 0.9;
                             transform-origin: center;
                             pointer-events: none;
@@ -312,10 +269,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
