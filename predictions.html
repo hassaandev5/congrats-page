@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Future Wishes & Predictions</title>
     <style>
-      /* Existing root and basic styles remain the same */
       :root {
         --primary-color: #9b6b9e;
         --light-color: #f5e6ff;
@@ -71,7 +70,7 @@
       .scroll-container {
         position: relative;
         width: 90%;
-        max-width: 800px;
+        max-width: 900px;
         background: var(--scroll-color);
         border: 2px solid var(--border-color);
         border-radius: 15px;
@@ -81,6 +80,10 @@
       }
 
       .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
         position: relative;
         padding: 1rem;
         background: linear-gradient(
@@ -89,6 +92,12 @@
           rgba(255, 255, 255, 0.5)
         );
         border-radius: 10px;
+      }
+
+      .header-section {
+        text-align: center;
+        margin-bottom: 1rem;
+        width: 100%;
       }
 
       .title {
@@ -114,7 +123,9 @@
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        margin: 1.5rem 0;
+        margin: 0;
+        width: 100%;
+        max-width: 800px;
       }
 
       .prediction-category {
@@ -127,13 +138,13 @@
       .prediction-content {
         color: #444;
         line-height: 1.8;
-        margin-bottom: 1rem;
+        margin-bottom: 0;
       }
 
       .celebrate-btn {
         display: block;
         width: fit-content;
-        margin: 2rem auto;
+        margin: 2rem auto 1rem;
         background: linear-gradient(
           45deg,
           var(--primary-color),
@@ -196,8 +207,10 @@
 
     <div class="scroll-container">
       <div class="content-wrapper">
-        <h1 class="title">Future Wishes & Predictions</h1>
-        <h2 class="subtitle">Glimpses into Tomorrow</h2>
+        <div class="header-section">
+          <h1 class="title">Future Wishes & Predictions</h1>
+          <h2 class="subtitle">Glimpses into Tomorrow</h2>
+        </div>
 
         <div class="prediction-card">
           <div class="prediction-category">What kind of mom Sidra will be</div>
@@ -249,7 +262,6 @@
         const fallingElements = document.querySelector(".falling-elements");
         const emojis = ["💫", "💝", "🌸", "💜", "✨", "🎀", "💌", "🤗"];
 
-        // Keep track of active emoji elements
         let activeEmojis = new Set();
 
         celebrateBtn.addEventListener("click", createCelebration);
@@ -260,23 +272,19 @@
               const emoji = document.createElement("div");
               emoji.className = "falling-emoji";
               emoji.style.cssText = `
-                            position: fixed;
-                            top: -20px;
-                            left: ${Math.random() * 100}vw;
-                            font-size: ${Math.random() * 20 + 20}px;
-                            animation: fall ${
-                              Math.random() * 2 + 3
-                            }s linear forwards;
-                            z-index: -1;
-                            pointer-events: none;
-                        `;
+                position: fixed;
+                top: -20px;
+                left: ${Math.random() * 100}vw;
+                font-size: ${Math.random() * 20 + 20}px;
+                animation: fall ${Math.random() * 2 + 3}s linear forwards;
+                z-index: 1000;
+                pointer-events: none;
+              `;
               emoji.innerText =
                 emojis[Math.floor(Math.random() * emojis.length)];
 
-              // Add to tracking set
               activeEmojis.add(emoji);
 
-              // Listen for animation end
               emoji.addEventListener("animationend", () => {
                 emoji.remove();
                 activeEmojis.delete(emoji);
@@ -284,7 +292,6 @@
 
               fallingElements.appendChild(emoji);
 
-              // Backup cleanup after 5 seconds
               setTimeout(() => {
                 if (activeEmojis.has(emoji)) {
                   emoji.remove();
@@ -297,20 +304,20 @@
 
         const styleSheet = document.createElement("style");
         styleSheet.textContent = `
-                @keyframes fall {
-                    0% { 
-                        transform: translateY(-20px) rotate(0deg);
-                        opacity: 1;
-                    }
-                    90% {
-                        opacity: 1;
-                    }
-                    100% { 
-                        transform: translateY(100vh) rotate(360deg);
-                        opacity: 0;
-                    }
-                }
-            `;
+          @keyframes fall {
+            0% { 
+              transform: translateY(-20px) rotate(0deg);
+              opacity: 1;
+            }
+            90% {
+              opacity: 1;
+            }
+            100% { 
+              transform: translateY(100vh) rotate(360deg);
+              opacity: 0;
+            }
+          }
+        `;
         document.head.appendChild(styleSheet);
       });
     </script>

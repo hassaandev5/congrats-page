@@ -68,7 +68,7 @@
       .scroll-container {
         position: relative;
         width: 90%;
-        max-width: 600px;
+        max-width: 1000px;
         max-height: 90vh;
         overflow-y: auto;
         background: var(--scroll-color);
@@ -96,14 +96,23 @@
       }
 
       .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
         position: relative;
-        padding: 1rem;
+        padding: 2rem;
         background: linear-gradient(
           to bottom,
           transparent,
           rgba(255, 255, 255, 0.5)
         );
         border-radius: 10px;
+      }
+
+      .header-section {
+        grid-column: 1 / -1;
+        text-align: center;
       }
 
       .decorative-border {
@@ -137,11 +146,13 @@
       }
 
       .message-card {
+        width: 100%;
+        max-width: 800px;
         background: rgba(255, 255, 255, 0.9);
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        margin: 1.5rem 0;
+        margin: 0 auto;
         line-height: 1.8;
       }
 
@@ -175,6 +186,8 @@
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 1;
       }
 
       .celebrate-btn:hover {
@@ -225,6 +238,12 @@
         border-top: 0;
       }
 
+      @media (max-width: 768px) {
+        .content-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 600px) {
         .title {
           font-size: 2rem;
@@ -260,8 +279,10 @@
         <div class="decorative-corner corner-bl"></div>
         <div class="decorative-corner corner-br"></div>
 
-        <h1 class="title">Farewell & Best Wishes</h1>
-        <h2 class="subtitle">Until We Meet Again...</h2>
+        <div class="header-section">
+          <h1 class="title">Farewell & Best Wishes</h1>
+          <h2 class="subtitle">Until We Meet Again...</h2>
+        </div>
 
         <div class="message-card">
           <p>Dear Sidra,</p>
