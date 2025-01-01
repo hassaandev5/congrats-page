@@ -1,321 +1,377 @@
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Congratulations on Your Baby Boy!</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="falling-elements"></div>
-
-    <main class="container">
-      <h1 class="title">Congratulations!</h1>
-      <div class="baby-icon">👶</div>
-      <h2 class="subtitle">Welcome Little One!</h2>
-
-      <div class="message-card">
-        <p>Dear <span class="name">Sidra</span>,</p>
-        <p>
-          As you embark on this beautiful journey of motherhood, we want to
-          celebrate this precious moment with you! Your dedication and amazing
-          work have inspired us all, and now you're starting the most wonderful
-          adventure of all.
-        </p>
-        <p>
-          We'll miss you during your maternity leave, but we couldn't be happier
-          for you and your growing family!
-        </p>
-        <p>With love,</p>
-        <p>Your Team ❤️</p>
-      </div>
-
-      <button class="celebrate-btn">Click to Celebrate! 🎉</button>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
-</html> --> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Farewell Scroll</title>
     <style>
-        :root {
-            --primary-color: #9b6b9e;
-            --light-color: #f5e6ff;
-            --dark-color: #614063;
-            --scroll-color: #fff5e6;
-            --border-color: #d4b483;
-        }
+      :root {
+        --primary-color: #9b6b9e;
+        --light-color: #f5e6ff;
+        --dark-color: #614063;
+        --scroll-color: #fff5e6;
+        --border-color: #d4b483;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: "Arial", sans-serif;
-            background: linear-gradient(135deg, #e6d0eb, #b185b7);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 2rem 0;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #e6d0eb, #b185b7);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+      }
 
-        .scroll-container {
-            position: relative;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            background: var(--scroll-color);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 2rem;
-            margin: 20px;
-        }
+      .nav-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
 
-        /* Custom Scrollbar */
-        .scroll-container::-webkit-scrollbar {
-            width: 12px;
-        }
+      .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
 
-        .scroll-container::-webkit-scrollbar-track {
-            background: rgba(155, 107, 158, 0.1);
-            border-radius: 6px;
-        }
+      .nav-item a {
+        color: var(--dark-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
 
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 6px;
-            border: 3px solid var(--scroll-color);
-        }
+      .nav-item a:hover {
+        background: var(--light-color);
+      }
 
-        .content-wrapper {
-            position: relative;
-            padding: 1rem;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
-            border-radius: 10px;
-        }
+      .nav-item a.active {
+        background: var(--primary-color);
+        color: white;
+      }
 
-        .decorative-border {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            pointer-events: none;
-            opacity: 0.5;
-        }
+      .scroll-container {
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        background: var(--scroll-color);
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        margin: 20px;
+      }
 
+      /* Custom Scrollbar */
+      .scroll-container::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      .scroll-container::-webkit-scrollbar-track {
+        background: rgba(155, 107, 158, 0.1);
+        border-radius: 6px;
+      }
+
+      .scroll-container::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 6px;
+        border: 3px solid var(--scroll-color);
+      }
+
+      .content-wrapper {
+        position: relative;
+        padding: 1rem;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 255, 255, 0.5)
+        );
+        border-radius: 10px;
+      }
+
+      .decorative-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+
+      .title {
+        color: var(--dark-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-family: "Georgia", serif;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        text-align: center;
+        opacity: 0.8;
+      }
+
+      .message-card {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin: 1.5rem 0;
+        line-height: 1.8;
+      }
+
+      .message-card p {
+        margin-bottom: 1.2rem;
+        color: #444;
+        font-size: 1.1rem;
+      }
+
+      .signature {
+        font-style: italic;
+        color: var(--dark-color);
+        margin-top: 2rem;
+        text-align: right;
+      }
+
+      .celebrate-btn {
+        display: block;
+        width: fit-content;
+        margin: 2rem auto;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .celebrate-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .falling-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      .decorative-corner {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border: 2px solid var(--border-color);
+        opacity: 0.6;
+      }
+
+      .corner-tl {
+        top: 10px;
+        left: 10px;
+        border-right: 0;
+        border-bottom: 0;
+      }
+      .corner-tr {
+        top: 10px;
+        right: 10px;
+        border-left: 0;
+        border-bottom: 0;
+      }
+      .corner-bl {
+        bottom: 10px;
+        left: 10px;
+        border-right: 0;
+        border-top: 0;
+      }
+      .corner-br {
+        bottom: 10px;
+        right: 10px;
+        border-left: 0;
+        border-top: 0;
+      }
+
+      @media (max-width: 600px) {
         .title {
-            color: var(--dark-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Georgia', serif;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+          font-size: 2rem;
         }
-
         .subtitle {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            text-align: center;
-            opacity: 0.8;
+          font-size: 1.2rem;
         }
-
+        .scroll-container {
+          padding: 1rem;
+        }
         .message-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 1.5rem 0;
-            line-height: 1.8;
+          padding: 1.5rem;
         }
-
-        .message-card p {
-            margin-bottom: 1.2rem;
-            color: #444;
-            font-size: 1.1rem;
-        }
-
-        .signature {
-            font-style: italic;
-            color: var(--dark-color);
-            margin-top: 2rem;
-            text-align: right;
-        }
-
-        .celebrate-btn {
-            display: block;
-            width: fit-content;
-            margin: 2rem auto;
-            background: linear-gradient(45deg, var(--primary-color), var(--dark-color));
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .celebrate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .falling-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .decorative-corner {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border: 2px solid var(--border-color);
-            opacity: 0.6;
-        }
-
-        .corner-tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
-        .corner-tr { top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
-        .corner-bl { bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
-        .corner-br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
-
-        @media (max-width: 600px) {
-            .title { font-size: 2rem; }
-            .subtitle { font-size: 1.2rem; }
-            .scroll-container { padding: 1rem; }
-            .message-card { padding: 1.5rem; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <nav class="nav-container">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html" class="active">Home</a></li>
+        <li class="nav-item"><a href="predictions.html">Predictions</a></li>
+        <li class="nav-item"><a href="blessings.html">Blessings</a></li>
+        <li class="nav-item"><a href="resources.html">Resources</a></li>
+      </ul>
+    </nav>
+
     <div class="falling-elements"></div>
 
     <div class="scroll-container">
-        <div class="content-wrapper">
-            <div class="decorative-corner corner-tl"></div>
-            <div class="decorative-corner corner-tr"></div>
-            <div class="decorative-corner corner-bl"></div>
-            <div class="decorative-corner corner-br"></div>
-            
-            <h1 class="title">Farewell & Best Wishes</h1>
-            <h2 class="subtitle">Until We Meet Again...</h2>
+      <div class="content-wrapper">
+        <div class="decorative-corner corner-tl"></div>
+        <div class="decorative-corner corner-tr"></div>
+        <div class="decorative-corner corner-bl"></div>
+        <div class="decorative-corner corner-br"></div>
 
-            <div class="message-card">
-              <p>Dear Sidra,</p>
-              <p>
-                  Today our hearts are filled with mixed emotions as we bid you farewell 
-                  for this wonderful new chapter in your life. Your leadership has been 
-                  our guiding light, and while your absence will be deeply felt, we're thrilled 
-                  about the beautiful journey of motherhood ahead of you.
-              </p>
-              <p>
-                  Our prayers and best wishes are with you during this precious time. May you be 
-                  blessed with a healthy pregnancy, a safe delivery, and a beautiful, healthy baby. 
-                  Your strength and grace will make you an amazing mother, just as they made you 
-                  an incredible leader.
-              </p>
-              <p>
-                  We pray that this new chapter brings you endless joy, precious moments, and the 
-                  magical experience of motherhood. Take all the time you need to cherish these 
-                  special moments with your little one. We'll be here, eagerly awaiting stories 
-                  of your new adventures when you return.
-              </p>
-              <p>
-                  May Allah bless you and your growing family with health, happiness, and His 
-                  divine protection. Until then, take care and enjoy every moment of this 
-                  beautiful journey.
-              </p>
-                <div class="signature">
-                    <p>With love and gratitude,</p>
-                    <p>Your Team 💝</p>
-                </div>
-            </div>
+        <h1 class="title">Farewell & Best Wishes</h1>
+        <h2 class="subtitle">Until We Meet Again...</h2>
 
-            <button class="celebrate-btn">Shower with Love! ✨</button>
+        <div class="message-card">
+          <p>Dear Sidra,</p>
+          <p>
+            Today our hearts are filled with mixed emotions as we bid you
+            farewell for this wonderful new chapter in your life. Your
+            leadership has been our guiding light, and while your absence will
+            be deeply felt, we're thrilled about the beautiful journey of
+            motherhood ahead of you.
+          </p>
+          <p>
+            Our prayers and best wishes are with you during this precious time.
+            May you be blessed with a healthy pregnancy, a safe delivery, and a
+            beautiful, healthy baby. Your strength and grace will make you an
+            amazing mother, just as they made you an incredible leader.
+          </p>
+          <p>
+            We pray that this new chapter brings you endless joy, precious
+            moments, and the magical experience of motherhood. Take all the time
+            you need to cherish these special moments with your little one.
+            We'll be here, eagerly awaiting stories of your new adventures when
+            you return.
+          </p>
+          <p>
+            May Allah bless you and your growing family with health, happiness,
+            and His divine protection. Until then, take care and enjoy every
+            moment of this beautiful journey.
+          </p>
+          <div class="signature">
+            <p>With love and gratitude,</p>
+            <p>Your Team 💝</p>
+          </div>
         </div>
+
+        <button class="celebrate-btn">Shower with Love! ✨</button>
+      </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const celebrateBtn = document.querySelector(".celebrate-btn");
-            const fallingElements = document.querySelector(".falling-elements");
-            const emojis = ["💫", "💝", "🌸", "💜", "✨", "🎀", "💌", "🤗"];
+      document.addEventListener("DOMContentLoaded", () => {
+        const celebrateBtn = document.querySelector(".celebrate-btn");
+        const fallingElements = document.querySelector(".falling-elements");
+        const emojis = ["💫", "💝", "🌸", "💜", "✨", "🎀", "💌", "🤗"];
 
-            celebrateBtn.addEventListener("click", createCelebration);
+        // Keep track of active emoji elements
+        let activeEmojis = new Set();
 
-            function createCelebration() {
-                for (let i = 0; i < 50; i++) {
-                    setTimeout(() => {
-                        const emoji = document.createElement("div");
-                        emoji.className = "falling-emoji";
-                        emoji.style.cssText = `
+        celebrateBtn.addEventListener("click", createCelebration);
+
+        function createCelebration() {
+          for (let i = 0; i < 50; i++) {
+            setTimeout(() => {
+              const emoji = document.createElement("div");
+              emoji.className = "falling-emoji";
+              const duration = Math.random() * 2 + 3;
+
+              emoji.style.cssText = `
                             position: fixed;
-                            top: -20px;
+                            top: -50px;
                             left: ${Math.random() * 100}vw;
                             font-size: ${Math.random() * 20 + 20}px;
-                            animation: fall ${Math.random() * 2 + 3}s linear;
-                            z-index: 1000;
-                            opacity: 0.9;
-                            transform-origin: center;
+                            animation: fall ${duration}s linear forwards;
+                            z-index: -1;
                             pointer-events: none;
                         `;
-                        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                        fallingElements.appendChild(emoji);
+              emoji.innerText =
+                emojis[Math.floor(Math.random() * emojis.length)];
 
-                        setTimeout(() => {
-                            emoji.remove();
-                        }, 5000);
-                    }, i * 100);
+              // Add to tracking set
+              activeEmojis.add(emoji);
+
+              // Listen for animation end
+              emoji.addEventListener("animationend", () => {
+                emoji.remove();
+                activeEmojis.delete(emoji);
+              });
+
+              fallingElements.appendChild(emoji);
+
+              // Backup cleanup
+              setTimeout(() => {
+                if (activeEmojis.has(emoji)) {
+                  emoji.remove();
+                  activeEmojis.delete(emoji);
                 }
-            }
+              }, duration * 1000 + 100);
+            }, i * 100);
+          }
+        }
 
-            const styleSheet = document.createElement("style");
-            styleSheet.textContent = `
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = `
                 @keyframes fall {
                     0% { 
-                        transform: translateY(-20px) rotate(0deg); 
+                        transform: translateY(0) rotate(0deg);
                         opacity: 1;
                     }
-                    50% {
-                        opacity: 0.8;
+                    80% {
+                        opacity: 1;
                     }
                     100% { 
-                        transform: translateY(100vh) rotate(360deg);
-                        opacity: 0.5;
+                        transform: translateY(${
+                          window.innerHeight + 100
+                        }px) rotate(360deg);
+                        opacity: 0;
                     }
                 }
             `;
-            document.head.appendChild(styleSheet);
-        });
+        document.head.appendChild(styleSheet);
+      });
     </script>
-</body>
+  </body>
 </html>
-
-
-
-
-
-
-
