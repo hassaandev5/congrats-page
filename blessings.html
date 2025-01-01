@@ -1,348 +1,424 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prayers & Blessings</title>
     <style>
-        :root {
-            --primary-color: #9b6b9e;
-            --light-color: #f5e6ff;
-            --dark-color: #614063;
-            --scroll-color: #fff5e6;
-            --border-color: #d4b483;
-        }
+      :root {
+        --primary-color: #9b6b9e;
+        --light-color: #f5e6ff;
+        --dark-color: #614063;
+        --scroll-color: #fff5e6;
+        --border-color: #d4b483;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: "Arial", sans-serif;
-            background: linear-gradient(135deg, #e6d0eb, #b185b7);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 0;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #e6d0eb, #b185b7);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+      }
 
-        .nav-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
+      .nav-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+      }
 
-        .nav-list {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
+      .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
 
-        .nav-item a {
-            color: var(--dark-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
+      .nav-item a {
+        color: var(--dark-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
 
-        .nav-item a:hover {
-            background: var(--light-color);
-        }
+      .nav-item a:hover {
+        background: var(--light-color);
+      }
 
-        .nav-item a.active {
-            background: var(--primary-color);
-            color: white;
-        }
+      .nav-item a.active {
+        background: var(--primary-color);
+        color: white;
+      }
 
-        .scroll-container {
-            position: relative;
-            width: 90%;
-            max-width: 800px;
-            background: var(--scroll-color);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 2rem;
-            margin: 20px;
-        }
+      .scroll-container {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        background: var(--scroll-color);
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        margin: 20px;
+      }
 
-        .content-wrapper {
-            position: relative;
-            padding: 1rem;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
-            border-radius: 10px;
-        }
+      .content-wrapper {
+        position: relative;
+        padding: 1rem;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 255, 255, 0.5)
+        );
+        border-radius: 10px;
+      }
 
+      .title {
+        color: var(--dark-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-family: "Georgia", serif;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        text-align: center;
+        opacity: 0.8;
+      }
+
+      .blessing-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin: 1.5rem 0;
+      }
+
+      .arabic-text {
+        font-family: "Traditional Arabic", serif;
+        font-size: 1.8rem;
+        text-align: right;
+        direction: rtl;
+        margin-bottom: 1rem;
+        color: var(--dark-color);
+        line-height: 2;
+      }
+
+      .translation {
+        color: #444;
+        font-style: italic;
+        margin-bottom: 1rem;
+        line-height: 1.8;
+        border-right: 3px solid var(--primary-color);
+        padding-right: 1rem;
+        margin-right: 1rem;
+      }
+
+      .transliteration {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+      }
+
+      .source {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        text-align: right;
+      }
+
+      .blessing-content {
+        color: #444;
+        line-height: 1.8;
+        margin: 1rem 0;
+      }
+
+      .celebrate-btn {
+        display: block;
+        width: fit-content;
+        margin: 2rem auto;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .celebrate-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .falling-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      .falling-dua {
+        position: fixed;
+        padding: 8px 16px;
+        border-radius: 25px;
+        pointer-events: none;
+        opacity: 0;
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        transform-origin: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 2px solid var(--border-color);
+        z-index: 1000;
+        will-change: transform, opacity;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-50px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(0) rotate(5deg);
+        }
+        45% {
+          transform: translateY(40vh) rotate(-5deg);
+          opacity: 1;
+        }
+        80% {
+          opacity: 0.8;
+          transform: translateY(80vh) rotate(5deg);
+        }
+        100% {
+          transform: translateY(110vh) rotate(-5deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
         .title {
-            color: var(--dark-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Georgia', serif;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+          font-size: 2rem;
         }
-
         .subtitle {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            text-align: center;
-            opacity: 0.8;
+          font-size: 1.2rem;
         }
-
+        .scroll-container {
+          padding: 1rem;
+        }
         .blessing-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 1.5rem 0;
+          padding: 1.5rem;
         }
-
         .arabic-text {
-            font-family: 'Traditional Arabic', serif;
-            font-size: 1.8rem;
-            text-align: right;
-            direction: rtl;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-            line-height: 2;
+          font-size: 1.5rem;
         }
-
-        .translation {
-            color: #444;
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            border-right: 3px solid var(--primary-color);
-            padding-right: 1rem;
-            margin-right: 1rem;
-        }
-
-        .transliteration {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            padding-left: 1rem;
-        }
-
-        .source {
-            color: var(--primary-color);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            text-align: right;
-        }
-
-        .blessing-content {
-            color: #444;
-            line-height: 1.8;
-            margin: 1rem 0;
-        }
-
-        .celebrate-btn {
-            display: block;
-            width: fit-content;
-            margin: 2rem auto;
-            background: linear-gradient(45deg, var(--primary-color), var(--dark-color));
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .celebrate-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .falling-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        .falling-dua {
-            position: fixed;
-            padding: 5px 10px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            pointer-events: none;
-            opacity: 0;
-            font-weight: 500;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-            transform-origin: center;
-        }
-
-        @keyframes fall {
-            0% { 
-                transform: translateY(-20px) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            25% {
-                transform: translateY(25vh) translateX(-20px) rotate(-45deg);
-            }
-            50% {
-                transform: translateY(50vh) translateX(20px) rotate(45deg);
-            }
-            75% {
-                transform: translateY(75vh) translateX(-20px) rotate(-45deg);
-            }
-            90% {
-                opacity: 1;
-            }
-            100% { 
-                transform: translateY(100vh) translateX(20px) rotate(45deg);
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .title { font-size: 2rem; }
-            .subtitle { font-size: 1.2rem; }
-            .scroll-container { padding: 1rem; }
-            .blessing-card { padding: 1.5rem; }
-            .arabic-text { font-size: 1.5rem; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="falling-elements"></div>
-    
+
     <nav class="nav-container">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="predictions.html">Predictions</a></li>
-            <li class="nav-item"><a href="blessings.html" class="active">Blessings</a></li>
-            <li class="nav-item"><a href="resources.html">Resources</a></li>
-        </ul>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="predictions.html">Predictions</a></li>
+        <li class="nav-item">
+          <a href="blessings.html" class="active">Blessings</a>
+        </li>
+        <li class="nav-item"><a href="resources.html">Resources</a></li>
+      </ul>
     </nav>
 
     <div class="scroll-container">
-        <div class="content-wrapper">
-            <h1 class="title">Prayers & Blessings</h1>
-            <h2 class="subtitle">Duas for the Journey Ahead</h2>
+      <div class="content-wrapper">
+        <h1 class="title">Prayers & Blessings</h1>
+        <h2 class="subtitle">Duas for the Journey Ahead</h2>
 
-            <div class="blessing-card">
-                <p class="arabic-text">رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ الدُّعَاءِ</p>
-                <p class="transliteration">Rabbi hab li min ladunka dhurriyyatan tayyibatan innaka sami'ud du'a</p>
-                <p class="translation">"My Lord, grant me from Yourself a righteous offspring. Indeed, You are the Hearer of supplication."</p>
-                <p class="source">Surah Al-Imran, Verse 38</p>
-            </div>
-
-            <div class="blessing-card">
-                <p class="arabic-text">رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ</p>
-                <p class="transliteration">Rabbij'alni muqimas salati wa min dhurriyyati rabbana wa taqabbal du'a</p>
-                <p class="translation">"My Lord, make me an establisher of prayer, and from my descendants. Our Lord, and accept my supplication."</p>
-                <p class="source">Surah Ibrahim, Verse 40</p>
-            </div>
-
-            <div class="blessing-card">
-                <p class="arabic-text">اللَّهُمَّ بَارِكْ لَهُمْ فِي مَا رَزَقْتَهُمْ، وَاغْفِرْ لَهُمْ وَارْحَمْهُمْ</p>
-                <p class="transliteration">Allahumma barik lahum fima razaqtahum, waghfir lahum warhamhum</p>
-                <p class="translation">"O Allah, bless them in what You have provided them, forgive them and have mercy upon them."</p>
-                <p class="blessing-content">May Allah bless your family with health, happiness, and His divine protection. May your child grow to be the coolness of your eyes and a source of continuous blessings.</p>
-            </div>
-
-            <div class="blessing-card">
-                <p class="arabic-text">اللَّهُمَّ اجْعَلْهُ قُرَّةَ عَيْنٍ لِّي وَلِوَالِدَيْهِ، وَاجْعَلْهُ سَلَفاً وَفَرَطاً وَذُخْراً</p>
-                <p class="transliteration">Allahumma'j'alhu qurrata 'ainin li wa liwalidayhi, waj'alhu salafan wa faratan wa dhukhran</p>
-                <p class="translation">"O Allah, make him a source of comfort for me and his parents, and make him a preceding reward and a treasure for us."</p>
-                <p class="blessing-content">May your child be blessed with good health, strong faith, and a beautiful character. May they bring joy and happiness to your life and be among the righteous.</p>
-            </div>
-
-            <button class="celebrate-btn">Share a Beautiful Dua 🤲✨</button>
+        <div class="blessing-card">
+          <p class="arabic-text">
+            رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً ۖ إِنَّكَ سَمِيعُ
+            الدُّعَاءِ
+          </p>
+          <p class="transliteration">
+            Rabbi hab li min ladunka dhurriyyatan tayyibatan innaka sami'ud du'a
+          </p>
+          <p class="translation">
+            "My Lord, grant me from Yourself a righteous offspring. Indeed, You
+            are the Hearer of supplication."
+          </p>
+          <p class="source">Surah Al-Imran, Verse 38</p>
         </div>
+
+        <div class="blessing-card">
+          <p class="arabic-text">
+            رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا
+            وَتَقَبَّلْ دُعَاءِ
+          </p>
+          <p class="transliteration">
+            Rabbij'alni muqimas salati wa min dhurriyyati rabbana wa taqabbal
+            du'a
+          </p>
+          <p class="translation">
+            "My Lord, make me an establisher of prayer, and from my descendants.
+            Our Lord, and accept my supplication."
+          </p>
+          <p class="source">Surah Ibrahim, Verse 40</p>
+        </div>
+
+        <div class="blessing-card">
+          <p class="arabic-text">
+            اللَّهُمَّ بَارِكْ لَهُمْ فِي مَا رَزَقْتَهُمْ، وَاغْفِرْ لَهُمْ
+            وَارْحَمْهُمْ
+          </p>
+          <p class="transliteration">
+            Allahumma barik lahum fima razaqtahum, waghfir lahum warhamhum
+          </p>
+          <p class="translation">
+            "O Allah, bless them in what You have provided them, forgive them
+            and have mercy upon them."
+          </p>
+          <p class="blessing-content">
+            May Allah bless your family with health, happiness, and His divine
+            protection. May your child grow to be the coolness of your eyes and
+            a source of continuous blessings.
+          </p>
+        </div>
+
+        <div class="blessing-card">
+          <p class="arabic-text">
+            اللَّهُمَّ اجْعَلْهُ قُرَّةَ عَيْنٍ لِّي وَلِوَالِدَيْهِ،
+            وَاجْعَلْهُ سَلَفاً وَفَرَطاً وَذُخْراً
+          </p>
+          <p class="transliteration">
+            Allahumma'j'alhu qurrata 'ainin li wa liwalidayhi, waj'alhu salafan
+            wa faratan wa dhukhran
+          </p>
+          <p class="translation">
+            "O Allah, make him a source of comfort for me and his parents, and
+            make him a preceding reward and a treasure for us."
+          </p>
+          <p class="blessing-content">
+            May your child be blessed with good health, strong faith, and a
+            beautiful character. May they bring joy and happiness to your life
+            and be among the righteous.
+          </p>
+        </div>
+
+        <button class="celebrate-btn">Share a Beautiful Dua 🤲✨</button>
+      </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const celebrateBtn = document.querySelector(".celebrate-btn");
-            const fallingElements = document.querySelector(".falling-elements");
-            const duas = [
-                "May Allah protect you",
-                "Allahumma barik",
-                "MashaaAllah",
-                "SubhanAllah",
-                "May Allah bless you",
-                "Allah guide you",
-                "Barakallah",
-                "Allah keep you safe",
-                "May you be righteous",
-                "Be blessed always"
-            ];
+      document.addEventListener("DOMContentLoaded", () => {
+        const celebrateBtn = document.querySelector(".celebrate-btn");
+        const fallingElements = document.querySelector(".falling-elements");
+        const duas = [
+          "May Allah protect you",
+          "Allahumma barik",
+          "MashaaAllah",
+          "SubhanAllah",
+          "May Allah bless you",
+          "Allah guide you",
+          "Barakallah",
+          "Allah keep you safe",
+          "May you be righteous",
+          "Be blessed always",
+        ];
 
-            function createDua() {
-                const colors = [
-                    { bg: '#FFD700', text: '#000000' }, // Gold
-                    { bg: '#FF69B4', text: '#FFFFFF' }, // Hot Pink
-                    { bg: '#4169E1', text: '#FFFFFF' }, // Royal Blue
-                    { bg: '#32CD32', text: '#FFFFFF' }, // Lime Green
-                    { bg: '#FF4500', text: '#FFFFFF' }, // Orange Red
-                    { bg: '#9370DB', text: '#FFFFFF' }, // Medium Purple
-                    { bg: '#20B2AA', text: '#FFFFFF' }, // Light Sea Green
-                    { bg: '#FF6347', text: '#FFFFFF' }, // Tomato
-                    { bg: '#4682B4', text: '#FFFFFF' }, // Steel Blue
-                    { bg: '#DDA0DD', text: '#000000' }  // Plum
-                ];
+        // Get CSS variables
+        const style = getComputedStyle(document.documentElement);
+        const primaryColor = style.getPropertyValue("--primary-color");
+        const lightColor = style.getPropertyValue("--light-color");
+        const darkColor = style.getPropertyValue("--dark-color");
+        const scrollColor = style.getPropertyValue("--scroll-color");
 
-                const dua = document.createElement("div");
-                dua.className = "falling-dua";
-                dua.style.left = `${Math.random() * 90}vw`;
-                dua.style.top = "-20px";
-                dua.style.fontSize = `${Math.random() * 10 + 16}px`;
-                
-                // Random animation duration between 3 and 6 seconds
-                const duration = 3 + Math.random() * 3;
-                dua.style.animation = `fall ${duration}s linear forwards`;
-                
-                // Random color selection
-                const colorScheme = colors[Math.floor(Math.random() * colors.length)];
-                dua.style.backgroundColor = colorScheme.bg;
-                dua.style.color = colorScheme.text;
-                
-                dua.innerText = duas[Math.floor(Math.random() * duas.length)];
-                
-                fallingElements.appendChild(dua);
+        const themeColors = [
+          { bg: primaryColor, text: "#FFFFFF" },
+          { bg: lightColor, text: darkColor },
+          { bg: darkColor, text: "#FFFFFF" },
+          { bg: scrollColor, text: darkColor },
+          { bg: "#FFFFFF", text: darkColor },
+        ];
 
-                // Remove the element when animation ends
-                dua.addEventListener("animationend", () => {
-                    dua.remove();
-                });
+        function createDua() {
+          const dua = document.createElement("div");
+          dua.className = "falling-dua";
+
+          // More natural horizontal distribution
+          const horizontalPos = 5 + Math.random() * 90;
+          dua.style.left = `${horizontalPos}vw`;
+
+          // Varying speeds for more natural movement
+          const duration = 5 + Math.random() * 2;
+          const delay = Math.random() * 0.5;
+          dua.style.animation = `fall ${duration}s ease-in-out ${delay}s forwards`;
+
+          // Theme-consistent color selection
+          const colorScheme =
+            themeColors[Math.floor(Math.random() * themeColors.length)];
+          dua.style.backgroundColor = colorScheme.bg;
+          dua.style.color = colorScheme.text;
+
+          // Subtle scale variation
+          const scale = 0.8 + Math.random() * 0.4;
+          dua.style.transform = `scale(${scale})`;
+
+          dua.innerText = duas[Math.floor(Math.random() * duas.length)];
+          fallingElements.appendChild(dua);
+
+          dua.addEventListener("animationend", () => {
+            dua.remove();
+          });
+        }
+
+        function createCelebration() {
+          let spawned = 0;
+          const maxDuas = 25;
+          const spawnInterval = setInterval(() => {
+            if (spawned >= maxDuas) {
+              clearInterval(spawnInterval);
+              return;
             }
+            createDua();
+            spawned++;
+          }, 200);
+        }
 
-            function createCelebration() {
-                for (let i = 0; i < 50; i++) {
-                    setTimeout(createDua, i * 100);
-                }
-            }
-
-            celebrateBtn.addEventListener("click", createCelebration);
-        });
+        celebrateBtn.addEventListener("click", createCelebration);
+      });
     </script>
-</body>
+  </body>
 </html>
