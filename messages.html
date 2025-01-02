@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages for Sidra</title>
+    <style>
+        /* Previous styles remain unchanged */
+        :root {
+            --primary-color: #9b6b9e;
+            --light-color: #f5e6ff;
+            --dark-color: #614063;
+            --scroll-color: #fff5e6;
+            --border-color: #d4b483;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(135deg, #e6d0eb, #b185b7);
+            min-height: 100vh;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            background: var(--light-color);
+        }
+
+        .nav-item a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .header-section {
+            text-align: center;
+            margin: 2rem auto;
+            color: var(--dark-color);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: "Georgia", serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .cards-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-name {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-emoji {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            position: relative;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .modal-message {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #444;
+            overflow-y: auto;
+            max-height: 60vh;
+            padding-right: 1rem;
+            margin-right: -1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--light-color);
+        }
+
+        .modal-message::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-message::-webkit-scrollbar-track {
+            background: var(--light-color);
+            border-radius: 4px;
+        }
+
+        .modal-message::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark-color);
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .falling-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .card-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        .message-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .message-selector {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .message-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .message-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="messages.html" class="active">Heartfelt Wishes</a></li>
+            <li class="nav-item"><a href="predictions.html">Predictions</a></li>
+            <li class="nav-item"><a href="blessings.html">Blessings</a></li>
+            <li class="nav-item"><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-section">
+        <h1 class="title">Messages for Sidra</h1>
+        <h2 class="subtitle">Click to read each message</h2>
+    </div>
+
+    <div class="cards-container">
+        <!-- Cards will be added here by JavaScript -->
+    </div>
+
+    <div class="modal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <div class="modal-header">
+                <h2 class="card-name"></h2>
+            </div>
+            <div class="modal-message"></div>
+            <div class="message-selector"></div>
+        </div>
+    </div>
+
+    <div class="falling-elements"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const messages = [
+                {
+                    name: "Alexander",
+                    emoji: "💝",
+                    messages: [
+                        `Sidra,
+Congratulations! Your maternity leave is finally here – a cherished and once-in-a-lifetime moment as a new mother. Everything at TaskSoft will be fine, I assure you, so there's no need to worry. While we'll deeply miss your full presence during this time, I completely understand your wish to stay involved in certain ways, as you mentioned privately. 
+
+To honor your request, we'll keep you engaged in votes and non-coding tasks, knowing that being a new mother requires significant time and effort. I want to emphasize that this is entirely your decision – not something I pushed for (so no one thinks otherwise, haha). I fully respect your wishes and am happy to accommodate them.
+
+Regarding the personal matters we've discussed privately, I have immense faith in you. You are a great, intelligent, and capable person. While certain circumstances or situations may evoke strong emotions, remember that these feelings, though valid, don't define the incredible person you are.
+
+If you ever feel the need for support or just want to talk, please don't hesitate to reach out – whether to me, boss 😊, or anyone at TaskSoft. I'm confident many of us feel the same admiration and respect for you that I do
+
+Enjoy this beautiful new chapter in your life,
+
+Alexander 😊`,
+                        `Sidra, as I prepare for your leave, I can't help but feel that an integral part of TaskSoft—and my life—will be missing. You've been a true pillar, the longest-standing member of our team by far, and we've shared countless conversations, both lighthearted and profound. Because of this, it feels like a part of me will be missing too. While I know this absence is only temporary, your presence will be deeply missed both at work and in my life
+
+Alexander 🌟`
+                    ]
+                },
+                {
+                    name: "Hassaan",
+                    emoji: "✨",
+                    messages: [
+                        `It's been quite the journey knowing you—from the days at university when we didn't interact much, to now working together as a team and getting to know you better. I feel lucky to have had the chance to work with you and witness the dedication and warmth you bring to everything you do.
+
+I wish you all the best on this beautiful journey into parenthood. May Allah guide you and bless you and your family abundantly.`
+                    ]
+                },
+                {
+                    name: "Fatima",
+                    emoji: "🌟",
+                    messages: [
+                        `Dear Sidra,
+As you prepare to step into this beautiful phase of your life, I want to express my heartfelt wishes for a smooth and joyful maternity leave. This is such an exciting time, and I hope you embrace every moment with love, care, and happiness.✨
+
+While we'll certainly miss your presence and contributions, your well-being and the well-being of your little one are what matter most. Take this time to rest, recharge, and cherish the precious moments with your growing family.
+
+Please don't hesitate to reach out if you ever need anything, whether it's advice, support, or just a listening ear. The team will manage (though we'll definitely miss your brilliant ideas). Your only "job" now is to rest, bond with your little one, and let yourself be amazed by the miracle of new life.We'll be here cheering for you and eagerly awaiting your return when you're ready.
+
+Wishing you a healthy, happy, and fulfilling maternity leave.✨
+
+Warm regards,
+Fatima Shabbir`
+                    ]
+                }
+            ];
+
+            const cardsContainer = document.querySelector(".cards-container");
+            const modal = document.querySelector(".modal");
+            const closeButton = document.querySelector(".close-button");
+            const fallingElements = document.querySelector(".falling-elements");
+            const emojis = ["💫", "💝", "🌸", "💜", "✨", "🎀", "💌", "🤗"];
+
+            // Create and append cards
+            messages.forEach(msg => {
+                const card = document.createElement("div");
+                card.className = "message-card";
+                card.innerHTML = `
+                    <h3 class="card-name">${msg.name}</h3>
+                    <div class="card-emoji">${msg.emoji}</div>
+                    <p>Click to read message${msg.messages.length > 1 ? 's' : ''}</p>
+                    ${msg.messages.length > 1 ? `<div class="message-number">${msg.messages.length}</div>` : ''}
+                `;
+
+                card.addEventListener("click", () => {
+                    showModal(msg);
+                });
+
+                cardsContainer.appendChild(card);
+            });
+
+            let currentMessageIndex = 0;
+
+            function showModal(msg) {
+                const modalName = modal.querySelector(".card-name");
+                const modalMessage = modal.querySelector(".modal-message");
+                const messageSelector = modal.querySelector(".message-selector");
+
+                modalName.textContent = msg.name;
+                currentMessageIndex = 0;
+                
+                // Clear previous message selector dots
+                messageSelector.innerHTML = '';
+                
+                // Create message selector dots if there are multiple messages
+                if (msg.messages.length > 1) {
+                    msg.messages.forEach((_, index) => {
+                        const dot = document.createElement("div");
+                        dot.className = `message-dot ${index === 0 ? 'active' : ''}`;
+                        dot.addEventListener("click", () => {
+                            currentMessageIndex = index;
+                            updateModalMessage(msg);
+                            updateDots();
+                        });
+                        messageSelector.appendChild(dot);
+                    });
+                }
+
+                updateModalMessage(msg);
+                modal.classList.add("active");
+                createConfetti();
+            }
+
+            function updateModalMessage(msg) {
+                const modalMessage = modal.querySelector(".modal-message");
+                modalMessage.textContent = msg.messages[currentMessageIndex];
+                
+                // Update dots
+                const dots = modal.querySelectorAll(".message-dot");
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentMessageIndex);
+                });
+            }
+
+            function createConfetti() {
+                const modalContent = document.querySelector(".modal-content");
+                const rect = modalContent.getBoundingClientRect();
+                
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        const emoji = document.createElement("div");
+                        emoji.className = "falling-emoji";
+                        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+                        const duration = Math.random() * 2 + 3;
+                        const startPos = Math.random() * rect.width;
+
+                        emoji.style.cssText = `
+                            position: fixed;
+                            top: ${rect.top - 20}px;
+                            left: ${rect.left + startPos}px;
+                            font-size: ${Math.random() * 20 + 20}px;
+                            animation: fall ${duration}s linear forwards;
+                            z-index: 1001;
+                            pointer-events: none;
+                        `;
+                        emoji.innerText = randomEmoji;
+
+                        fallingElements.appendChild(emoji);
+
+                        setTimeout(() => {
+                            emoji.remove();
+                        }, duration * 1000);
+                    }, i * 40);
+                }
+            }
+
+            closeButton.addEventListener("click", () => {
+                modal.classList.remove("active");
+            });
+
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove("active");
+                }
+            });
+
+            const styleSheet = document.createElement("style");
+            styleSheet.textContent = `
+                @keyframes fall {
+                    0% { 
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    80% {
+                        opacity: 1;
+                    }
+                    100% { 
+                        transform: translateY(${window.innerHeight}px) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+        });
+    </script>
+</body>
+</html>
