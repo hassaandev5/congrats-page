@@ -1,208 +1,227 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parenting Resources</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>"
+    />
     <style>
-        :root {
-            --primary-color: #9b6b9e;
-            --light-color: #f5e6ff;
-            --dark-color: #614063;
-            --scroll-color: #fff5e6;
-            --border-color: #d4b483;
-        }
+      :root {
+        --primary-color: #9b6b9e;
+        --light-color: #f5e6ff;
+        --dark-color: #614063;
+        --scroll-color: #fff5e6;
+        --border-color: #d4b483;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: "Arial", sans-serif;
-            background: linear-gradient(135deg, #e6d0eb, #b185b7);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 0;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #e6d0eb, #b185b7);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+      }
 
-        .nav-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+      .nav-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
 
-        .nav-list {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
+      .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
 
-        .nav-item a {
-            color: var(--dark-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
+      .nav-item a {
+        color: var(--dark-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
 
-        .nav-item a:hover {
-            background: var(--light-color);
-        }
+      .nav-item a:hover {
+        background: var(--light-color);
+      }
 
-        .nav-item a.active {
-            background: var(--primary-color);
-            color: white;
-        }
+      .nav-item a.active {
+        background: var(--primary-color);
+        color: white;
+      }
 
-        .scroll-container {
-            position: relative;
-            width: 90%;
-            max-width: 800px;
-            background: var(--scroll-color);
-            border: 2px solid var(--border-color);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 2rem;
-            margin: 20px;
-        }
+      .scroll-container {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        background: var(--scroll-color);
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        margin: 20px;
+      }
 
-        .content-wrapper {
-            position: relative;
-            padding: 1rem;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
-            border-radius: 10px;
-        }
+      .content-wrapper {
+        position: relative;
+        padding: 1rem;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 255, 255, 0.5)
+        );
+        border-radius: 10px;
+      }
 
+      .title {
+        color: var(--dark-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-family: "Georgia", serif;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        text-align: center;
+        opacity: 0.8;
+      }
+
+      .resource-card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin: 1.5rem 0;
+      }
+
+      .resource-category {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--light-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .resource-list {
+        list-style: none;
+        margin: 1rem 0;
+      }
+
+      .resource-item {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .resource-item::before {
+        content: "•";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+
+      .resource-description {
+        color: #666;
+        font-size: 0.95rem;
+        margin-top: 0.3rem;
+        margin-left: 0.5rem;
+      }
+
+      .add-resource-btn {
+        display: block;
+        width: fit-content;
+        margin: 2rem auto;
+        background: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .add-resource-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .falling-emoji {
+        position: fixed;
+        pointer-events: none;
+        font-size: 24px;
+        user-select: none;
+        z-index: 1000;
+        opacity: 0;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-20vh) rotate(0deg);
+          opacity: 1;
+        }
+        25% {
+          transform: translateY(25vh) translateX(-20px) rotate(90deg);
+        }
+        50% {
+          transform: translateY(50vh) translateX(20px) rotate(180deg);
+          opacity: 1;
+        }
+        75% {
+          transform: translateY(75vh) translateX(-20px) rotate(270deg);
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
         .title {
-            color: var(--dark-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Georgia', serif;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+          font-size: 2rem;
         }
-
         .subtitle {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            text-align: center;
-            opacity: 0.8;
+          font-size: 1.2rem;
         }
-
+        .scroll-container {
+          padding: 1rem;
+        }
         .resource-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin: 1.5rem 0;
+          padding: 1.5rem;
         }
-
-        .resource-category {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--light-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .resource-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .resource-item {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .resource-item::before {
-            content: "•";
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        .resource-description {
-            color: #666;
-            font-size: 0.95rem;
-            margin-top: 0.3rem;
-            margin-left: 0.5rem;
-        }
-
-        .add-resource-btn {
-            display: block;
-            width: fit-content;
-            margin: 2rem auto;
-            background: linear-gradient(45deg, var(--primary-color), var(--dark-color));
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .add-resource-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .falling-emoji {
-            position: fixed;
-            pointer-events: none;
-            font-size: 24px;
-            user-select: none;
-            z-index: 1000;
-            opacity: 0;
-        }
-
-        @keyframes fall {
-            0% { 
-                transform: translateY(-20vh) rotate(0deg);
-                opacity: 1;
-            }
-            25% {
-                transform: translateY(25vh) translateX(-20px) rotate(90deg);
-            }
-            50% {
-                transform: translateY(50vh) translateX(20px) rotate(180deg);
-                opacity: 1;
-            }
-            75% {
-                transform: translateY(75vh) translateX(-20px) rotate(270deg);
-            }
-            100% { 
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .title { font-size: 2rem; }
-            .subtitle { font-size: 1.2rem; }
-            .scroll-container { padding: 1rem; }
-            .resource-card { padding: 1.5rem; }
-        }
+      }
     </style>
 </head>
 <body>
@@ -219,135 +238,162 @@
   
 
     <div class="scroll-container">
-        <div class="content-wrapper">
-            <h1 class="title">Parenting Resources</h1>
-            <h2 class="subtitle">Wisdom from Parents in Our Team</h2>
+      <div class="content-wrapper">
+        <h1 class="title">Parenting Resources</h1>
+        <h2 class="subtitle">Wisdom from Parents in Our Team</h2>
 
-            <div class="resource-card">
-                <div class="resource-category">Recommended Books 📚</div>
-                <ul class="resource-list">
-                    <li class="resource-item">
-                        "The Whole-Brain Child"
-                        <div class="resource-description">Perfect for understanding child development and nurturing emotional intelligence</div>
-                    </li>
-                    <li class="resource-item">
-                        "Islamic Parenting: Raising Upright Children"
-                        <div class="resource-description">A beautiful guide combining modern parenting with Islamic values</div>
-                    </li>
-                    <li class="resource-item">
-                        "What to Expect When You're Expecting"
-                        <div class="resource-description">The classic pregnancy guide that answers all your questions</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="resource-card">
-                <div class="resource-category">Useful Apps & Websites 📱</div>
-                <ul class="resource-list">
-                    <li class="resource-item">
-                        Baby Tracker
-                        <div class="resource-description">Track feeding, sleep, and diaper changes easily</div>
-                    </li>
-                    <li class="resource-item">
-                        Muslim Pro
-                        <div class="resource-description">Prayer times, Qur'an, and Islamic content for the family</div>
-                    </li>
-                    <li class="resource-item">
-                        Calm
-                        <div class="resource-description">Meditation and sleep stories for both mom and baby</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="resource-card">
-                <div class="resource-category">Local Parent Groups 👥</div>
-                <ul class="resource-list">
-                    <li class="resource-item">
-                        Muslim Moms Support Group
-                        <div class="resource-description">Weekly meetups and online community for Muslim mothers</div>
-                    </li>
-                    <li class="resource-item">
-                        New Parents Circle
-                        <div class="resource-description">Monthly gatherings with experienced parents and professionals</div>
-                    </li>
-                    <li class="resource-item">
-                        Baby & Me Classes
-                        <div class="resource-description">Fun activities for parents and babies to bond together</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="resource-card">
-                <div class="resource-category">Practical Tips from Parents 💝</div>
-                <ul class="resource-list">
-                    <li class="resource-item">
-                        Sleep Schedule
-                        <div class="resource-description">Create a consistent bedtime routine from the start</div>
-                    </li>
-                    <li class="resource-item">
-                        Self-Care Time
-                        <div class="resource-description">Don't forget to take breaks and rest when the baby rests</div>
-                    </li>
-                    <li class="resource-item">
-                        Support System
-                        <div class="resource-description">Accept help from family and friends - it takes a village!</div>
-                    </li>
-                </ul>
-            </div>
-
-            <button class="add-resource-btn">Share Resources 📚</button>
+        <div class="resource-card">
+          <div class="resource-category">Recommended Books 📚</div>
+          <ul class="resource-list">
+            <li class="resource-item">
+              "The Whole-Brain Child"
+              <div class="resource-description">
+                Perfect for understanding child development and nurturing
+                emotional intelligence
+              </div>
+            </li>
+            <li class="resource-item">
+              "Islamic Parenting: Raising Upright Children"
+              <div class="resource-description">
+                A beautiful guide combining modern parenting with Islamic values
+              </div>
+            </li>
+            <li class="resource-item">
+              "What to Expect When You're Expecting"
+              <div class="resource-description">
+                The classic pregnancy guide that answers all your questions
+              </div>
+            </li>
+          </ul>
         </div>
+
+        <div class="resource-card">
+          <div class="resource-category">Useful Apps & Websites 📱</div>
+          <ul class="resource-list">
+            <li class="resource-item">
+              Baby Tracker
+              <div class="resource-description">
+                Track feeding, sleep, and diaper changes easily
+              </div>
+            </li>
+            <li class="resource-item">
+              Muslim Pro
+              <div class="resource-description">
+                Prayer times, Qur'an, and Islamic content for the family
+              </div>
+            </li>
+            <li class="resource-item">
+              Calm
+              <div class="resource-description">
+                Meditation and sleep stories for both mom and baby
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-category">Local Parent Groups 👥</div>
+          <ul class="resource-list">
+            <li class="resource-item">
+              Muslim Moms Support Group
+              <div class="resource-description">
+                Weekly meetups and online community for Muslim mothers
+              </div>
+            </li>
+            <li class="resource-item">
+              New Parents Circle
+              <div class="resource-description">
+                Monthly gatherings with experienced parents and professionals
+              </div>
+            </li>
+            <li class="resource-item">
+              Baby & Me Classes
+              <div class="resource-description">
+                Fun activities for parents and babies to bond together
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-category">Practical Tips from Parents 💝</div>
+          <ul class="resource-list">
+            <li class="resource-item">
+              Sleep Schedule
+              <div class="resource-description">
+                Create a consistent bedtime routine from the start
+              </div>
+            </li>
+            <li class="resource-item">
+              Self-Care Time
+              <div class="resource-description">
+                Don't forget to take breaks and rest when the baby rests
+              </div>
+            </li>
+            <li class="resource-item">
+              Support System
+              <div class="resource-description">
+                Accept help from family and friends - it takes a village!
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <button class="add-resource-btn">Share Resources 📚</button>
+      </div>
     </div>
 
     <script>
-        document.querySelector('.add-resource-btn').addEventListener('click', () => {
-            createBookEmojis();
+      document
+        .querySelector(".add-resource-btn")
+        .addEventListener("click", () => {
+          createBookEmojis();
         });
 
-        function createBookEmojis() {
-            const emojis = ['📚', '📖', '📘', '📗', '📙', '📕'];
-            const container = document.createElement('div');
-            container.style.position = 'fixed';
-            container.style.top = '0';
-            container.style.left = '0';
-            container.style.width = '100%';
-            container.style.height = '100%';
-            container.style.pointerEvents = 'none';
-            container.style.zIndex = '9999';
-            document.body.appendChild(container);
-            
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const emoji = document.createElement('div');
-                    emoji.className = 'falling-emoji';
-                    emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                    
-                    // Random starting position
-                    emoji.style.left = `${Math.random() * 100}vw`;
-                    emoji.style.top = '-20px';
-                    
-                    // Random size variation
-                    const size = 24 + Math.random() * 24;
-                    emoji.style.fontSize = `${size}px`;
-                    
-                    // Random animation duration
-                    const duration = 3 + Math.random() * 2;
-                    emoji.style.animation = `fall ${duration}s linear forwards`;
-                    
-                    container.appendChild(emoji);
-                    
-                    // Remove emoji after animation
-                    setTimeout(() => {
-                        emoji.remove();
-                    }, duration * 1000);
-                }, i * 100);
-            }
+      function createBookEmojis() {
+        const emojis = ["📚", "📖", "📘", "📗", "📙", "📕"];
+        const container = document.createElement("div");
+        container.style.position = "fixed";
+        container.style.top = "0";
+        container.style.left = "0";
+        container.style.width = "100%";
+        container.style.height = "100%";
+        container.style.pointerEvents = "none";
+        container.style.zIndex = "9999";
+        document.body.appendChild(container);
 
-            // Clean up container after all animations
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => {
+            const emoji = document.createElement("div");
+            emoji.className = "falling-emoji";
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+            // Random starting position
+            emoji.style.left = `${Math.random() * 100}vw`;
+            emoji.style.top = "-20px";
+
+            // Random size variation
+            const size = 24 + Math.random() * 24;
+            emoji.style.fontSize = `${size}px`;
+
+            // Random animation duration
+            const duration = 3 + Math.random() * 2;
+            emoji.style.animation = `fall ${duration}s linear forwards`;
+
+            container.appendChild(emoji);
+
+            // Remove emoji after animation
             setTimeout(() => {
-                container.remove();
-            }, 8000);
+              emoji.remove();
+            }, duration * 1000);
+          }, i * 100);
         }
+
+        // Clean up container after all animations
+        setTimeout(() => {
+          container.remove();
+        }, 8000);
+      }
     </script>
-</body>
+  </body>
 </html>
